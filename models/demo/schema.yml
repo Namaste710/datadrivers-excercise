@@ -1,0 +1,32 @@
+
+version: 2
+
+sources:
+  - name: ytcategories_bq
+    description: BigQuery table of YT categories of trending videos
+    schema: datadrivers_demo
+    tables: 
+      - name: ytcategories_trending
+
+
+models:
+  - name: ytcategories_dbt
+    description: "YT categories of trending videos"
+    columns:
+      - name: id
+        description: "The primary key for this table"
+        tests:
+          - unique
+          - not_null
+      - name: snippet_title
+        description: Category of the trending video
+  - name: show_ref_usage
+    description: "Usage of ref on ytcategories_dbt"
+    columns:
+      - name: id
+        description: "The primary key for this table"
+        tests:
+          - unique
+          - not_null
+      - name: snippet_title
+        description: Category of the trending video
